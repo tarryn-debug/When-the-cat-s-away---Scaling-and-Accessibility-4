@@ -182,9 +182,9 @@
     }
 
     .icon-btn {
-      background: #ffffff;
-      border: 1.5px solid var(--color-navy-header);
-      color: var(--color-navy-header);
+      background: transparent;
+      border: none;
+      outline: none;
       border-radius: 50%;
       width: 32px;
       height: 32px;
@@ -192,22 +192,21 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.2s ease;
       padding: 0;
     }
 
     .icon-btn .menu-btn-icon {
-      width: 16px;
-      height: 16px;
+      width: 100%;
+      height: 100%;
       display: block;
       object-fit: contain;
       pointer-events: none;
     }
 
     .icon-btn:hover, .icon-btn:focus-visible {
-      background: var(--color-bg-light);
-      border-color: var(--color-teal);
-      outline: 2px solid var(--color-teal);
+      background: transparent;
+      border: none;
+      outline: none;
     }
 
     .stage-view {
@@ -722,7 +721,6 @@
     .sub-title { font-size: calc(17.5 * var(--u)); }
     .header-buttons { gap: calc(8 * var(--u)); }
     .icon-btn { width: calc(36 * var(--u)); height: calc(36 * var(--u)); }
-    .icon-btn .menu-btn-icon { width: calc(18 * var(--u)); height: calc(18 * var(--u)); }
 
     .view-cover { padding: calc(64 * var(--u)) calc(96 * var(--u)); }
     .cover-content { max-width: calc(460 * var(--u)); gap: calc(32 * var(--u)); }
@@ -808,13 +806,13 @@
       </div>
       <nav class="header-buttons" aria-label="Interactive Navigation">
         <button class="icon-btn" id="btn-reset" aria-label="Reset Infographic" data-normal="Resources/PastedVector-10.svg" data-hover="Resources/Home over.svg" data-pressed="Resources/Home pressed.svg">
-          <img src="Resources/PastedVector-10.svg" alt="Home" class="menu-btn-icon" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23475ED1\'><path d=\'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\'/></svg>';">
+          <img src="Resources/PastedVector-10.svg" alt="Home" class="menu-btn-icon">
         </button>
         <button class="icon-btn" id="btn-biblio" aria-label="Open Bibliography" data-normal="Resources/PastedVector-12.svg" data-hover="Resources/Bibliography over.svg" data-pressed="Resources/Bibliography pressed.svg">
-          <img src="Resources/PastedVector-12.svg" alt="Bibliography" class="menu-btn-icon" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23475ED1\'><path d=\'M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z\'/></svg>';">
+          <img src="Resources/PastedVector-12.svg" alt="Bibliography" class="menu-btn-icon">
         </button>
         <button class="icon-btn" id="btn-exit" aria-label="Exit Interactive" data-normal="Resources/PastedVector-14.svg" data-hover="Resources/Close over.svg" data-pressed="Resources/Close pressed.svg">
-          <img src="Resources/PastedVector-14.svg" alt="Exit" class="menu-btn-icon" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23475ED1\' stroke-width=\'2\'><line x1=\'18\' y1=\'6\' x2=\'6\' y2=\'18\'></line><line x1=\'6\' y1=\'6\' x2=\'18\' y2=\'18\'></line></svg>';">
+          <img src="Resources/PastedVector-14.svg" alt="Exit" class="menu-btn-icon">
         </button>
       </nav>
     </header>
