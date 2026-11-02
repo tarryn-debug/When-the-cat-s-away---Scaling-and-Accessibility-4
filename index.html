@@ -182,31 +182,57 @@
     }
 
     .icon-btn {
-      background: transparent;
-      border: none;
-      outline: none;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      --ring: #475ED1;
+      --ring-fill: transparent;
+      --glyph: #475ED1;
+      width: 36px;
+      height: 36px;
       padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      flex: none;
+      display: block;
+      border-radius: 50%;
+      transition: none;
     }
 
-    .icon-btn .menu-btn-icon {
+    .icon-btn svg {
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: contain;
-      pointer-events: none;
+      overflow: visible;
     }
 
-    .icon-btn:hover, .icon-btn:focus-visible {
-      background: transparent;
-      border: none;
+    .icon-btn .ring {
+      fill: var(--ring-fill);
+      stroke: var(--ring);
+      stroke-width: 1;
+    }
+
+    .icon-btn .glyph {
+      fill: var(--glyph);
+    }
+
+    .icon-btn .xglyph {
+      fill: none;
+      stroke: var(--glyph);
+      stroke-width: 2;
+      stroke-linecap: butt;
+    }
+
+    .icon-btn:hover,
+    .icon-btn:focus-visible {
+      --ring: #1f2e7a;
+      --ring-fill: #ebedfa;
+      --glyph: #1f2e7a;
       outline: none;
+    }
+
+    .icon-btn:active {
+      --ring: #1dc9a4;
+      --ring-fill: transparent;
+      --glyph: #1f2e7a;
     }
 
     .stage-view {
@@ -805,14 +831,24 @@
         <span class="sub-title">When the cat's away</span>
       </div>
       <nav class="header-buttons" aria-label="Interactive Navigation">
-        <button class="icon-btn" id="btn-reset" aria-label="Reset Infographic" data-normal="Resources/PastedVector-10.svg" data-hover="Resources/Home over.svg" data-pressed="Resources/Home pressed.svg">
-          <img src="Resources/PastedVector-10.svg" alt="Home" class="menu-btn-icon">
+        <button class="icon-btn" id="btn-reset" aria-label="Reset Infographic">
+          <svg viewBox="0 0 36 36">
+            <circle class="ring" cx="18" cy="18" r="16.5"/>
+            <path class="glyph" d="M18 10.5l-7 6.2v8.8h4.5v-5.5h5v5.5H25v-8.8l-7-6.2z"/>
+          </svg>
         </button>
-        <button class="icon-btn" id="btn-biblio" aria-label="Open Bibliography" data-normal="Resources/PastedVector-12.svg" data-hover="Resources/Bibliography over.svg" data-pressed="Resources/Bibliography pressed.svg">
-          <img src="Resources/PastedVector-12.svg" alt="Bibliography" class="menu-btn-icon">
+        <button class="icon-btn" id="btn-biblio" aria-label="Open Bibliography">
+          <svg viewBox="0 0 36 36">
+            <circle class="ring" cx="18" cy="18" r="16.5"/>
+            <path class="glyph" d="M12.5 11h-2v14h14v-2h-12V11zm15-4h-11c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 13h-11V9h11v11z"/>
+          </svg>
         </button>
-        <button class="icon-btn" id="btn-exit" aria-label="Exit Interactive" data-normal="Resources/PastedVector-14.svg" data-hover="Resources/Close over.svg" data-pressed="Resources/Close pressed.svg">
-          <img src="Resources/PastedVector-14.svg" alt="Exit" class="menu-btn-icon">
+        <button class="icon-btn" id="btn-exit" aria-label="Exit Interactive">
+          <svg viewBox="0 0 36 36">
+            <circle class="ring" cx="18" cy="18" r="16.5"/>
+            <line class="xglyph" x1="12.5" y1="12.5" x2="23.5" y2="23.5"/>
+            <line class="xglyph" x1="23.5" y1="12.5" x2="12.5" y2="23.5"/>
+          </svg>
         </button>
       </nav>
     </header>
@@ -1022,23 +1058,6 @@
 
     const viewedMap = new Set();
     let activePin = null;
-
-    // Set up hover and pressed states for header buttons
-    document.querySelectorAll('.header-buttons .icon-btn').forEach(btn => {
-      const img = btn.querySelector('.menu-btn-icon');
-      const normal = btn.dataset.normal;
-      const hover = btn.dataset.hover;
-      const pressed = btn.dataset.pressed;
-
-      [hover, pressed].forEach(src => {
-        if (src) { const p = new Image(); p.src = src; }
-      });
-
-      btn.addEventListener('mouseenter', () => { if (img && hover) img.src = hover; });
-      btn.addEventListener('mouseleave', () => { if (img && normal) img.src = normal; });
-      btn.addEventListener('mousedown', () => { if (img && pressed) img.src = pressed; });
-      btn.addEventListener('mouseup', () => { if (img && hover) img.src = hover; });
-    });
 
     // Tangent points from an external point (px, py) to a circle (cx, cy, r)
     function tangentPoints(px, py, cx, cy, r) {
